@@ -1,17 +1,69 @@
-.App {
+body {
   text-align: center;
+  background-color:#1e1e2f;
+}
+.topBar{
+  
+  background-color:red;
+  color: white;
+  margin:auto;
+  margin-top:20px;
+  margin-bottom:20px;
+  border-radius: 5px;
+
+}
+.sideNavGrid{
+
+  background-color: #0590ed;
+  color: white;
+  margin-top:20px;
+  border-radius: 5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mainContent{
+
+  /* background-color: #0590ed; */
+  color: white;
+  margin-top:20px;
+  border-radius: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.upperMainDiv{
+
+  background-color:#27293d ;
+  color: white;
+  border-radius: 5px;
+  height: 400px;
 }
+
+.lowerDiv{
+  background-color:#27293d ;
+  color: white;
+ 
+  height: 200px;
+  border-radius: 5px;
+  margin-top:20px;
+}
+
+.notificationDiv{
+  background-color:#27293d ;
+  color: white;
+  height: 200px;
+  border-radius: 5px;
+  margin-top:20px;
+}
+
+.sideNavList{
+  text-decoration: none;
+  list-style-type: none;
+  display:block;
+}
+
+.sideNav{
+  background-color: #282c34;
+  color: white;
+}
+
 
 .App-header {
   background-color: #282c34;

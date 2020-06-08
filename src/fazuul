@@ -1,0 +1,64 @@
+
+            <Grid className = "mainContent" xs={11} sm={8} 
+                  container alignItems="flex-start" justify="space-between"
+            >
+
+              {/* Upper Div Section */}
+              
+                 <Grid className = "upperMainDiv" xs={12} sm={12} 
+                  container alignItems="center"
+                  direction="row"
+                  >
+                      <div className = "sideNave">
+                        <h1> This is upper content </h1>
+                      </div>
+                  </Grid>
+
+                {/* lower Div Section */}
+
+                  <Grid className = "lowerDiv" xs={12} sm={3} 
+                  container alignItems="center"
+                  //direction="row"
+                  >
+                      <div className = "sideNave">
+                        <h1> This is Lower Content </h1>
+                      </div>
+                  </Grid>
+                  <Grid className = "lowerDiv" xs={12} sm={3} 
+                  container alignItems="center"
+                  //direction="row"
+                  >
+                      <div className = "sideNave">
+                        <h1> This is Lower Content </h1>
+                      </div>
+                  </Grid>
+                  <Grid className = "lowerDiv" xs={12} sm={3} 
+                  container alignItems="center"
+                  //direction="row"
+                  >
+                      <div className = "sideNave">
+                        <h1> This is Lower Content </h1>
+                      </div>
+                  </Grid>
+
+                {/* Notification Div Section */}
+              
+                  <Grid className = "notificationDiv" xs={12} sm={5} 
+                  container alignItems="center"
+                  //direction="row"
+                  >
+                      <div className = "sideNave">
+                        <h1> This is Notification Content </h1>
+                      </div>
+                  </Grid>
+
+                  <Grid className = "notificationDiv" xs={12} sm={5} 
+                  container alignItems="center"
+                  //direction="row"
+                  >
+                      <div className = "sideNave">
+                        <h1> This is Notification Content </h1>
+                      </div>
+                  </Grid>
+
+            </Grid>
