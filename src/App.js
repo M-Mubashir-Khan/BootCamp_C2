@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 //import MainSection from './Components/MainSection'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import axios from 'axios';
@@ -47,9 +46,9 @@ class App extends React.Component{
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state.Country);
-    if(event.target.value == "Global"){
-      console.log("is empty");
+    //console.log(this.state.Country);
+    if(event.target.value === "Global"){
+      //console.log("is empty");
       this.getAPIData();    
     }else{
     this.getAPIDataCountry(event.target.value)
@@ -59,7 +58,7 @@ class App extends React.Component{
   async getAPIDailyData() {
     //console.log(props)
     let doc =  await axios.get(`https://covid19.mathdro.id/api/daily`)
-    console.log(doc.data);
+    //console.log(doc.data);
     let data = doc.data;
     // const DailyReport = data.map((doc, i) => ({
     //            Dates : doc.reportDate,
@@ -79,9 +78,9 @@ class App extends React.Component{
         )) 
            
      })
-     console.log(this.state.Dates)
-     console.log(this.state.Confirmed)
-     console.log(this.state.Deaths)
+    // console.log(this.state.Dates)
+    // console.log(this.state.Confirmed)
+    // console.log(this.state.Deaths)
             
     //console.log(DailyReport)
 
@@ -97,7 +96,7 @@ class App extends React.Component{
   async getAPIDataCountry(props) {
     //console.log(props)
     let doc =  await axios.get(`https://covid19.mathdro.id/api/countries/${props}`)
-    console.log(doc);
+    //console.log(doc);
     this.setState({
       fetchedData : {
         Confirmed : doc.data.confirmed.value,
@@ -109,7 +108,7 @@ class App extends React.Component{
   }
   async getAPIData() {
     let doc =  await axios.get('https://covid19.mathdro.id/api')
-    console.log(doc);
+   // console.log(doc);
     this.setState({
       fetchedData : {
         Confirmed : doc.data.confirmed.value,
@@ -121,12 +120,12 @@ class App extends React.Component{
   }
   async getCountries() {
     let doc =  await axios.get('https://covid19.mathdro.id/api/countries')
-    console.log(doc.data); 
+    //console.log(doc.data); 
     let data = doc.data.countries;
     //this.setState({ countryList : data})
     
     if (data.length > 0  ){
-      console.log("In data")    
+    //  console.log("In data")    
     this.setState({
      countryName: data.map((doc, i) => (
       //console.log(doc.name);
@@ -140,7 +139,7 @@ class App extends React.Component{
   render(){
 
     let Chart;
-    if (this.state.Country == "Global" ) {
+    if (this.state.Country === "Global" ) {
       Chart = <Line 
       className = "LineChart"
        options={{
@@ -259,10 +258,10 @@ class App extends React.Component{
                     </Select>
                 </FormControl>  
 
-                <img src={require('./img1.png')} className="sideImage" />
-                <img src={require('./img2.png')} className="sideImage" />
-                <img src={require('./img3.png')} className="sideImage" />
-                <img src={require('./img4.png')} className="sideImage" />
+                <img src={require('./img1.png')} alt="Precautions" className="sideImage" />
+                <img src={require('./img2.png')} alt="Precautions" className="sideImage" />
+                <img src={require('./img3.png')} alt="Precautions" className="sideImage" />
+                <img src={require('./img4.png')} alt="Precautions" className="sideImage" />
 
             </Grid>
 
@@ -393,8 +392,8 @@ class App extends React.Component{
                   //direction="row"
                   >
                       <div className = "sideNave">
-                          <a href="https://e-payment.nbp.com.pk/" target="_blank">
-                            <img src={require('./covid.jpeg')} className="images" />
+                          <a href="https://e-payment.nbp.com.pk/" target="_blank" rel="noopener noreferrer" >
+                            <img src={require('./covid.jpeg')} alt="Account" className="images" />
                             </a>
                       </div>
                   </Grid>
