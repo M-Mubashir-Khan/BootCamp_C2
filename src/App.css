@@ -2,6 +2,22 @@ body {
   text-align: center;
   background-color:#1e1e2f;
 }
+.countrySelector{
+  /* margin-top: 30px; */
+  width:100%;
+  color: white;
+  background-color: white;
+  border-color: white;
+}
+
+.formControl{
+  width:80%;
+}
+
+MenuItem{
+  color: white;
+}
+
 .topBar{
   
   background-color:red;
@@ -33,7 +49,7 @@ body {
   background-color:#27293d ;
   color: white;
   border-radius: 5px;
-  height: 400px;
+  height: 450px;
 }
 
 .lowerDiv{
@@ -44,11 +60,31 @@ body {
   border-radius: 5px;
   margin-top:20px;
 }
+.LineChart{
+  width:100%;
+  height:400px;
+}
+.images{
+  width:100%;
+  height:500px;
+  border-radius: 10px;
+  /* border:solid;
+  border-width:10px;
+  border-color:#1e1e2f ; */
+
+}
+
+.sideImage{
+  width:80%;
+  height:250px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
 
 .notificationDiv{
   background-color:#27293d ;
   color: white;
-  height: 200px;
+  height: 500px;
   border-radius: 5px;
   margin-top:20px;
 }
@@ -62,6 +98,18 @@ body {
 .sideNav{
   background-color: #282c34;
   color: white;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.ChartDiv{
+  display:"flex";
+  justify-content:"center";
+  width: 85%;
+  /* background-color: #282c34; */
+  color: white;
+  padding-top: 10px;
+  text-align: center;
 }
 
 

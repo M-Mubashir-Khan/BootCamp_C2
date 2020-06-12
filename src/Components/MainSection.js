@@ -1,45 +1,76 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
 
 class MainSection extends React.Component{
 
+  constructor(props){
+    super(props);
+    this.state = {
+      fetchedData : {
+        Confirmed : "",
+        Recovered : "",
+        Deaths : "",
+      },
+      country : props.country
+    }
+    this.getAPIData = this.getAPIData.bind(this);
+    this.getAPIDataCountry = this.getAPIDataCountry.bind(this);
+  }
+  
+  componentDidMount() {
+    console.log(this.state.country);
+    // if (this.state.country == ""){
+    //   this.getAPIData();
+    // }else{
+    //   this.getAPIDataCountry(this.state.country)
+    // }
+    
+  }
+
+  async getAPIDataCountry(props) {
+    let doc =  await axios.get(`https://covid19.mathdro.id/api/countries/${props.country}`)
+    console.log(doc);
+    this.setState({
+      fetchedData : {
+        Confirmed : doc.data.confirmed.value,
+        Recovered : doc.data.recovered.value,
+        Deaths : doc.data.deaths.value
+      }
+    })
+  }
+  async getAPIData() {
+    let doc =  await axios.get('https://covid19.mathdro.id/api')
+    console.log(doc);
+    this.setState({
+      fetchedData : {
+        Confirmed : doc.data.confirmed.value,
+        Recovered : doc.data.recovered.value,
+        Deaths : doc.data.deaths.value
+      }
+    })
+    //   let data = doc.data;
+  //   if (data.length > 0  ){
+  //   console.log(data[0].Approved); 
+  //   this.setState({
+  //    UserData: data.map((doc, i) => (
+      
+  //        <tr key={doc._id}>
+  //          <td>{doc.Name}</td>
+  //          <td>{doc.NIC}</td>
+  //          <td>{doc.Number}</td>
+  //          <td>{doc.Role}</td>
+  //          <td><button type = "submit" onClick={() => this.setApprove(doc._id)} class="waves-effect waves-light btn">Approve</button></td>
+  //        </tr>
+  //      ))
+  //    });
+   
+  //  }
+   }
+
   render(){
     return(
-    //   <Grid>
-    //     <Grid
-    //       className = "topBar"
-    //       xs = {11}
-    //       sm = {11}
-
-    //       container
-    //       direction="row"
-    //       justify="flex-start"
-    //       alignItems="flex-start"
-    //     >
-    //     <div>
-    //       <h6>Do You Want to Help Corona Victims? </h6>
-    //     </div>
-    //     </Grid>
-    //     <Grid container direction="row" justify="space-evenly"
-    //       //alignItems="flex-start"
-    //     >
-
-    //         <Grid
-    //           className = "sideNavGrid" xs={11} sm={3}
-    //           container alignItems="flex-start" justify="flex-start"
-    //         >
-    //               {/* <div className = "sideNave">
-    //                 <h1> We will Create a side Nav!!!! </h1>
-    //               </div> */}
-
-    //             <ul className = "sideNavList">
-    //               <li>Details</li>
-    //               <li>News</li>
-    //               <li>Want to Help?</li>  
-    //             </ul>    
-
-    //         </Grid>
-
+    
             <Grid className = "mainContent" xs={11} sm={8} 
                   container alignItems="flex-start" justify="space-between"
             >
@@ -62,7 +93,8 @@ class MainSection extends React.Component{
                   //direction="row"
                   >
                       <div className = "sideNave">
-                        <h1> This is Lower Content </h1>
+                        <h1> Confirmed </h1>
+                        <p> {this.state.fetchedData.Confirmed} </p>
                       </div>
                   </Grid>
                   <Grid className = "lowerDiv" xs={12} sm={3} 
@@ -70,7 +102,8 @@ class MainSection extends React.Component{
                   //direction="row"
                   >
                       <div className = "sideNave">
-                        <h1> This is Lower Content </h1>
+                        <h1> Recovered </h1>
+                        <p>{this.state.fetchedData.Recovered}</p>
                       </div>
                   </Grid>
                   <Grid className = "lowerDiv" xs={12} sm={3} 
@@ -78,7 +111,8 @@ class MainSection extends React.Component{
                   //direction="row"
                   >
                       <div className = "sideNave">
-                        <h1> This is Lower Content </h1>
+                        <h1> Deaths </h1>
+                        <p>{this.state.fetchedData.Deaths}</p>
                       </div>
                   </Grid>
 
