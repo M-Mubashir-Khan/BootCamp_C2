@@ -142,9 +142,29 @@ class App extends React.Component{
     if (this.state.Country === "Global" ) {
       Chart = <Line 
       className = "LineChart"
-       options={{
+      options={{
+        
         responsive: true,
         maintainAspectRatio: true,
+        legend: {
+          labels: {
+              // This more specific font property overrides the global property
+              fontColor: 'white'
+          }
+      },
+      scales: {
+          xAxes: [{
+            gridLines: { color: "#131c2b" },
+            ticks: {
+              fontColor: "white",
+              fontSize: 10
+             }}],
+          yAxes: [{gridLines: { color: "#131c2b" },
+          ticks: {
+            fontColor: "white",
+            fontSize: 10
+           }}]
+          },
       }}
       data = {{
         labels: this.state.Dates,
@@ -167,6 +187,7 @@ class App extends React.Component{
       data={{
         labels : ["Infected","Recovered","Deaths"],
         datasets : [{
+         
           label : "People",
           backgroundColor : [
             "rgba(255,255,0,0.7)",
@@ -181,47 +202,33 @@ class App extends React.Component{
         }]
       }}
       options={{
-        legend : {display:false},
-        title : {display:true, text:`Current state in ${this.state.Country}`}
+        legend: {
+          display:false
+        },
+         title : {display:true, text:`Current state in ${this.state.Country}`, fontColor: 'white'},
+         scales: {
+          xAxes: [{
+            gridLines: { color: "#131c2b" },
+            ticks: {
+              fontColor: "white",
+              fontSize: 12
+             }}],
+          yAxes: [{gridLines: { color: "#131c2b" },
+          ticks: {
+            fontColor: "white",
+            fontSize: 10
+           }}]
+          },
       }}
   />     ;
     }
 
-    // const LineChart = <Line 
-    //           data = {{
-    //             labels:{},
-    //             datasets:[{
-    //               data:this.state.DailyReport.map(({Confirmed}) => Confirmed),
-    //               label:"Infected",
-    //               borderColor: '#3333ff',
-    //               fill:true
-
-    //             },{
-    //               data:this.DailyReport.map(({Deaths}) => Deaths),
-    //               label:"Deaths",
-    //               borderColor: 'red',
-    //               backgroundColor: 'rgba(255,0,0,0.5)',
-    //               fill:true
-    //             }]
-    //           }}/>
+    
 
     return(
       //<div style>Hi React</div>
       <Grid>
-        <Grid
-          className = "topBar"
-          xs = {11}
-          sm = {11}
-
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
-        <div style={{alignItems:"center"}}>
-          <h3> Corona Victims Are Our Brothers And Sisters And They Need Our Sampathy </h3>
-        </div>
-        </Grid>
+        
         <Grid container direction="row" justify="space-evenly"
         style={{marginBottom:20}}
           //alignItems="flex-start"
@@ -234,10 +241,11 @@ class App extends React.Component{
                   {/* <div className = "sideNave">
                     <h1> We will Create a side Nav!!!! </h1>
                   </div> */}
-
+                  
                 {/* <FormControl variant="outlined" className={classes.formControl}> */}
                 <FormControl variant="outlined" className="formControl"style={{marginTop:20}}>
-                    <InputLabel id="demo-simple-select-filled-label" >Select Country</InputLabel>
+                    <h4>SELECT COUNTRY</h4>
+                    {/* <InputLabel id="demo-simple-select-filled-label" >Select Country</InputLabel> */}
                     <Select
                        labelId="demo-simple-select-filled-label"
                        id="demo-simple-select-filled"
@@ -245,7 +253,7 @@ class App extends React.Component{
                       className="countrySelector"
                       name ="Country"
                       onChange={this.handleChange}
-                      label="Select Country"
+                      // label="Select Country"
                       value = {this.state.Country}
                     >
                        <MenuItem value={"Global"}>
@@ -279,63 +287,18 @@ class App extends React.Component{
                   >
                       <div className = "ChartDiv">
                         {Chart}
-                      {/* <Line 
-                          className = "LineChart"
-                           options={{
-                            responsive: true,
-                            maintainAspectRatio: true,
-                          }}
-                          data = {{
-                            labels: this.state.Dates,
-                            datasets:[{
-                              data:this.state.Confirmed,
-                              label:"Infected",
-                              borderColor: 'yellow',
-                              fill:true
-
-                            },{
-                              data:this.state.Deaths,
-                              label:"Deaths",
-                              borderColor: 'red',
-                              backgroundColor: 'rgba(255,0,0,0.5)',
-                              fill:true
-                            }]
-                      }}/>  */}
-
-                      {/* <Bar
-                          data={{
-                            labels : ["Infected","Recovered","Deaths"],
-                            datasets : [{
-                              label : "People",
-                              backgroundColor : [
-                                "rgba(255,255,0,0.7)",
-                                "rgba(0,255,0,0.7)",
-                                "rgba(255,0,0,0.7)"
-                              ],
-                              data : [
-                                this.state.fetchedData.Confirmed,
-                                this.state.fetchedData.Recovered,
-                                this.state.fetchedData.Deaths
-                              ]
-                            }]
-                          }}
-                          options={{
-                            legend : {display:false},
-                            title : {display:true, text:`Current state in ${this.state.Country}`}
-                          }}
-                      />       */}
                       </div>
                   </Grid>
 
                 {/* lower Div Section */}
 
-                  <Grid className = "lowerDiv" xs={12} sm={3} 
+                  <Grid className = "lowerDiv" xs={12} sm={12} md={3}
                   container alignItems="flex-start" justify="center"
                   style={{border:"solid",borderColor:"yellow"}}
-                  direction="row"
+                  // direction="row"
                   >
                     
-                    <br/>
+                    {/* <br/> */}
                       <div className = "sideNave" xs={12}>
                       <Avatar alt="Remy Sharp" src={"alert.png"} style={{borderRadius:0,margin:"auto",marginTop:10}} />  
                         <h3> CONFIRMED </h3>
@@ -348,7 +311,7 @@ class App extends React.Component{
                         </h2>
                       </div>
                   </Grid>
-                  <Grid className = "lowerDiv" xs={12} sm={3} 
+                  <Grid className = "lowerDiv" xs={12} sm={12} md={3} 
                    container alignItems="flex-start" justify="center"
                    style={{border:"solid",borderColor:"green"}}
                   //direction="row"
@@ -366,7 +329,7 @@ class App extends React.Component{
                         
                       </div>
                   </Grid>
-                  <Grid className = "lowerDiv" xs={12} sm={3} 
+                  <Grid className = "lowerDiv" xs={12} sm={12} md={3} 
                    container alignItems="flex-start" justify="center"
                    style={{border:"solid",borderColor:"maroon"}}
                   //direction="row"
